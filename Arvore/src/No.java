@@ -4,19 +4,23 @@ public class No {
 	
 	No esquerda;
 
-	Object elemento;
+	Comparable elemento;
 
-	public No(Object elem) {
+	public No(Comparable elem) {
 		this.elemento = elem;
 	}
 
-	public No(Object elem, No cel) {
+	public No(Comparable elem, No cel) {
 		this.elemento = elem;
 		this.direita = cel;
 	}
 	
 	@Override
 	public String toString() {
-		return "[" + elemento + "]";
+		return "[" 
+				+ (esquerda != null? esquerda : "#")
+				+ " <- " + elemento + " -> "
+				+ (direita != null? direita : "#")
+						+ "]";
 	}
 }

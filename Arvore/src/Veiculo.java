@@ -1,5 +1,5 @@
 
-public class Veiculo {
+public class Veiculo implements Comparable<Veiculo> {
 	
 	String placa;
 	Integer velocidade;
@@ -43,5 +43,10 @@ public class Veiculo {
 		} else if (!velocidade.equals(other.velocidade))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Veiculo o) {
+		return this.placa.compareTo(o.placa);
 	}
 }
