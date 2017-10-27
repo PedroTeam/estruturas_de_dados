@@ -1,17 +1,15 @@
 
 public class Veiculo implements Comparable<Veiculo> {
 	
-	String placa;
-	Integer velocidade;
+	Integer placa;
 
-	public Veiculo(String placa, Integer velocidade) {
+	public Veiculo(Integer placa) {
 		this.placa = placa;
-		this.velocidade = velocidade;
 	}
 
 	@Override
 	public String toString() {
-		return "Veiculo [placa=" + placa + ", velocidade=" + velocidade + "]";
+		return "Veiculo [placa=" + placa +"]";
 	}
 
 	@Override
@@ -19,7 +17,6 @@ public class Veiculo implements Comparable<Veiculo> {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((placa == null) ? 0 : placa.hashCode());
-		result = prime * result + ((velocidade == null) ? 0 : velocidade.hashCode());
 		return result;
 	}
 
@@ -37,11 +34,7 @@ public class Veiculo implements Comparable<Veiculo> {
 				return false;
 		} else if (!placa.equals(other.placa))
 			return false;
-		if (velocidade == null) {
-			if (other.velocidade != null)
-				return false;
-		} else if (!velocidade.equals(other.velocidade))
-			return false;
+		
 		return true;
 	}
 

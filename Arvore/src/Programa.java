@@ -10,12 +10,16 @@ public class Programa {
 		Veiculo veiculo = null;
 		for (int i = 0; i < quant; i++) {
 			System.out.printf("Escreva a placa do veiculo %d:\n", i + 1);
-			String placa = scan.next();
-			System.out.printf("Escreva a velocidade do veiculo %d:\n", i + 1);
-			int velocidade = scan.nextInt();
-			veiculo = new Veiculo(placa, velocidade);
+			Integer placa = scan.nextInt();
+			veiculo = new Veiculo(placa);
 			veiculos.add(null, veiculo);
 		}
+		System.out.println(veiculos);
+
+		veiculos.remover(veiculos.getRaiz(), new Veiculo(7));
+		System.out.println(veiculos);
+
+		veiculos.remover(veiculos.getRaiz(), new Veiculo(10));
 		System.out.println(veiculos);
 
 //		System.out.printf("\nEscreva a placa do veiculo da posicao %d:\n", 1);
