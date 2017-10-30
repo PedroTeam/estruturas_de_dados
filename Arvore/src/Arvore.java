@@ -6,7 +6,16 @@ public class Arvore {
 	private int totalElementos = 0;
 
 	/**
-	 * Insere o elemento na ultima posicao
+	 * Insere o elemento
+	 * 
+	 * @param elemento
+	 */
+	public void add(Comparable elemento) {
+		add(getRaiz(), elemento);
+	}
+	
+	/**
+	 * Insere o elemento
 	 * 
 	 * @param elemento
 	 */

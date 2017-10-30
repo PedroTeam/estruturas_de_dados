@@ -13,7 +13,7 @@ public class Programa {
 			System.out.printf("Escreva a placa do veiculo %d:\n", i + 1);
 			placa = scan.nextInt();
 			veiculo = new Veiculo(placa);
-			veiculos.add(null, veiculo);
+			veiculos.add(veiculo);
 		}
 		System.out.println(veiculos);
 
@@ -21,7 +21,7 @@ public class Programa {
 			System.out.printf("Escreva a placa do veiculo para remover:\n");
 			placa = scan.nextInt();
 
-			veiculos.remover(veiculos.getRaiz(), new Veiculo(placa));
+			veiculos.remover(new Veiculo(placa));
 			System.out.println(veiculos);
 		}		
 		
