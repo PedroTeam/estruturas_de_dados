@@ -9,7 +9,7 @@ public class Veiculo implements Comparable<Veiculo> {
 
 	@Override
 	public String toString() {
-		return "Veiculo [placa=" + placa +"]";
+		return "Veiculo(" + placa +")";
 	}
 
 	@Override

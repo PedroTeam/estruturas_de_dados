@@ -8,40 +8,22 @@ public class Programa {
 		int quant = scan.nextInt();
 		Arvore veiculos = new Arvore();
 		Veiculo veiculo = null;
+		int placa = 0;
 		for (int i = 0; i < quant; i++) {
 			System.out.printf("Escreva a placa do veiculo %d:\n", i + 1);
-			Integer placa = scan.nextInt();
+			placa = scan.nextInt();
 			veiculo = new Veiculo(placa);
 			veiculos.add(null, veiculo);
 		}
 		System.out.println(veiculos);
 
-		veiculos.remover(veiculos.getRaiz(), new Veiculo(7));
-		System.out.println(veiculos);
+		while (placa!=0) {
+			System.out.printf("Escreva a placa do veiculo para remover:\n");
+			placa = scan.nextInt();
 
-		veiculos.remover(veiculos.getRaiz(), new Veiculo(10));
-		System.out.println(veiculos);
-
-//		System.out.printf("\nEscreva a placa do veiculo da posicao %d:\n", 1);
-//		String placa = scan.next();
-//		System.out.printf("Escreva a velocidade do veiculo da posicao %d:\n", 1);
-//		int velocidade = scan.nextInt();
-//		veiculo = new Veiculo(placa, velocidade);
-//		veiculos.add(1, veiculo);
-//
-//		System.out.println(veiculos);
-//
-//		System.out.printf("\nEscreva a posicao desejada para exclusao:\n");
-//		int posicao = scan.nextInt();
-//		System.out.println(veiculos.recupera(posicao));
-//
-//		veiculos.remove(1);
-//		System.out.println(veiculos);
-//		for (int i = 0; i < 5; i++) {
-//			veiculos.remove();
-//			System.out.println(veiculos);
-//		}
-		
+			veiculos.remover(veiculos.getRaiz(), new Veiculo(placa));
+			System.out.println(veiculos);
+		}		
 		
 
 	}
