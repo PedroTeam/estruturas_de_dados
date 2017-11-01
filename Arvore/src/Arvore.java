@@ -65,12 +65,13 @@ public class Arvore {
 	public No remover(Comparable elemento) {
 		return remover(getRaiz(),elemento);
 	}
+
 	public No remover(No aux, Comparable elemento) {
 		No p, r = null;
 		if (aux==null) {
 			return aux;
 		}
-		if (aux.elemento.compareTo(elemento) == 0) {
+		if (aux.elemento.compareTo(elemento) == 0) {//achei o elemento
 			if (aux.esquerda == null && aux.direita == null) {
 				return null;
 			} else if (aux.esquerda == null) {
@@ -84,9 +85,10 @@ public class Arvore {
 					p = p.esquerda;
 				}
 				aux.elemento = p.elemento;
-				p = null;
+				
 				if (r!=null) {
-					r.esquerda = null;
+					p = p.direita;
+					r.esquerda = p;
 				} else {
 					aux.direita = null;
 				}
