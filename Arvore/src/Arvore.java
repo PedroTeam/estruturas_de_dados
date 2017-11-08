@@ -72,6 +72,7 @@ public class Arvore {
 			return aux;
 		}
 		if (aux.elemento.compareTo(elemento) == 0) {//achei o elemento
+			this.totalElementos--;
 			if (aux.esquerda == null && aux.direita == null) {
 				return null;
 			} else if (aux.esquerda == null) {
@@ -90,7 +91,7 @@ public class Arvore {
 					p = p.direita;
 					r.esquerda = p;
 				} else {
-					aux.direita = null;
+					aux.direita = p.direita;
 				}
 				return aux;
 			}
@@ -115,16 +116,6 @@ public class Arvore {
         return loc;
     }
 
-	/**
-	 * Verifica se existe Veiculo na posicao indicada.
-	 * 
-	 * @param index
-	 * @return
-	 */
-	public boolean posicaoValida(Integer index) {
-		return index >= 0 && index < this.totalElementos;
-	}
-
 	@Override
 	public String toString() {
 		String str = getRaiz().toString();
@@ -145,5 +136,9 @@ public class Arvore {
 
 	public No getRaiz() {
 		return raiz;
+	}
+
+	public int getTotalElementos() {
+		return totalElementos;
 	}
 }

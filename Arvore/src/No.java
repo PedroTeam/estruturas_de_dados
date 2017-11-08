@@ -3,6 +3,8 @@ public class No {
 	No direita;
 	
 	No esquerda;
+	
+	int altura = 0;
 
 	Comparable elemento;
 
@@ -19,7 +21,7 @@ public class No {
 	public String toString() {
 		return "[" 
 				+ (esquerda != null? esquerda : "#")
-				+ " <- " + elemento + " -> "
+				+ " <- "+ altura+"-" + elemento + " -> "
 				+ (direita != null? direita : "#")
 						+ "]";
 	}
