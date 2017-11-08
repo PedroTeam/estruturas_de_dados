@@ -17,8 +17,17 @@ public class No {
 		this.direita = cel;
 	}
 	
-	public boolean isBalancedo() {
-		return Math.abs(ArvoreAVL.diff(direita, esquerda))<=1;
+	public boolean isBalanceado() {
+		boolean balanceado=true;
+		//verifica se a direita esta balanceada
+		if (direita!=null) {
+			balanceado = direita.isBalanceado();
+		}
+		//verifica se a esquerda esta balaceada somente se a direita estiver balanceada
+		if (esquerda!=null&&balanceado) {
+			balanceado = esquerda.isBalanceado();
+		}
+		return balanceado&&Math.abs(ArvoreAVL.diff(direita, esquerda))<=1;
 	}
 	
 	@Override

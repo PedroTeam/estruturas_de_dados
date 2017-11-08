@@ -9,6 +9,14 @@ public class ArvoreAVL extends Arvore {
 	public void add(No noh, Comparable elemento) {
 		super.add(noh, elemento);
 		atualizarAltura(getRaiz());
+		if (!isBalanceada()) {
+			balancear(getRaiz());
+		}
+	}
+
+	private void balancear(No raiz) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private No atualizarAltura(No no) {
@@ -40,7 +48,7 @@ public class ArvoreAVL extends Arvore {
 	}
 
 	public static boolean isBalanceado(No no) {
-		return no == null ? true : no.isBalancedo();
+		return no == null ? true : no.isBalanceado();
 	}
 
 	public static int diff(No direita, No esquerda) {
