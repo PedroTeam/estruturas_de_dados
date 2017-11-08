@@ -103,7 +103,7 @@ public class Arvore {
 		return aux;
 	}
 
-	public boolean localizar(No aux, Comparable elemento, boolean loc) {
+	public static boolean localizar(No aux, Comparable elemento, boolean loc) {
         if (aux != null && loc == false) {
             if (aux.elemento.equals(elemento)) {
                 loc = true;
@@ -115,6 +115,11 @@ public class Arvore {
         }
         return loc;
     }
+
+	public boolean localizar(Comparable elemento) {
+		return localizar(getRaiz(), elemento, false);
+	}
+	
 
 	@Override
 	public String toString() {

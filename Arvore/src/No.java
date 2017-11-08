@@ -17,6 +17,10 @@ public class No {
 		this.direita = cel;
 	}
 	
+	public boolean isBalancedo() {
+		return Math.abs(ArvoreAVL.diff(direita, esquerda))<=1;
+	}
+	
 	@Override
 	public String toString() {
 		return "[" 
