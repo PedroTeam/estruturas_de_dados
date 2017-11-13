@@ -1,22 +1,47 @@
 
 public class ArvoreAVL extends Arvore {
 
+	public void add(Comparable elemento, boolean naoBalancear) {
+		add(getRaiz(), elemento, naoBalancear);
+	}
+	
 	/**
 	 * Insere o elemento
 	 * 
 	 * @param elemento
 	 */
 	public void add(No noh, Comparable elemento) {
+		add(noh, elemento, false);
+	}
+
+	public void add(No noh, Comparable elemento, boolean naoBalancear) {
 		super.add(noh, elemento);
 		atualizarAltura(getRaiz());
-		if (!isBalanceada()) {
+		if (!naoBalancear&&!isBalanceada()) {
 			balancear(getRaiz());
 		}
 	}
+	
+	private void balancear(No no) {
+		int diff = diff(no.direita, no.esquerda);
+		if (diff > 0) {// verifica se esta desbalanceada direita
+			if (diff >= 2) {// Verifica se eh o no que esta desbalanceado
+				Comparable aux = no.elemento;
+				this.remover(no.elemento, true);
+				this.add(aux, true);
+			} else {// Chama o balandear da direita
+				balancear(no.direita);
+			}
+		} else {// verifica se esta desbalanceada esquerda
+			if (diff <= -2) {// Verifica se eh o no que esta desbalanceado
+				Comparable aux = no.elemento;
+				this.remover(no.elemento, true);
+				this.add(aux, true);
+			} else {// Chama o balandear da esquerda
+				balancear(no.esquerda);
+			}
+		}
 
-	private void balancear(No raiz) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private No atualizarAltura(No no) {
@@ -59,13 +84,24 @@ public class ArvoreAVL extends Arvore {
 		} else if (direita != null) {
 			return direita.altura - (-1);
 		} else {
-			return esquerda.altura - (-1);
+			return (-1) - esquerda.altura ;
 		}
 	}
 
+	public No remover(Comparable elemento, boolean naoBalancear) {
+		return remover(getRaiz(), elemento, naoBalancear);
+	}
+
 	public No remover(No aux, Comparable elemento) {
+		return remover(aux, elemento, false);
+	}
+	
+	public No remover(No aux, Comparable elemento, boolean naoBalancear) {
 		aux = super.remover(aux, elemento);
 		atualizarAltura(getRaiz());
+		if (!naoBalancear&&!isBalanceada()) {
+			balancear(getRaiz());
+		}
 		return aux;
 	}
 

@@ -15,6 +15,7 @@ public class ProgramaAVL {
 			veiculo = new Veiculo(placa);
 			veiculos.add(veiculo);
 			System.out.println("Balanceada="+veiculos.isBalanceada());
+			System.out.println(veiculos);
 		}
 		System.out.println(veiculos);
 
