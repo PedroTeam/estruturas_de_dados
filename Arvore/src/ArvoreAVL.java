@@ -32,7 +32,7 @@ public class ArvoreAVL extends Arvore {
 			} else {// Chama o balandear da direita
 				balancear(no.direita);
 			}
-		} else {// verifica se esta desbalanceada esquerda
+		} else if (diff < 0) {// verifica se esta desbalanceada esquerda
 			if (diff <= -2) {// Verifica se eh o no que esta desbalanceado
 				Comparable aux = no.elemento;
 				this.remover(no.elemento, true);
@@ -40,6 +40,11 @@ public class ArvoreAVL extends Arvore {
 			} else {// Chama o balandear da esquerda
 				balancear(no.esquerda);
 			}
+		} else {
+			if (no.direita!=null)
+				balancear(no.direita);
+			if (no.esquerda!=null)
+				balancear(no.esquerda);
 		}
 
 	}
@@ -97,10 +102,22 @@ public class ArvoreAVL extends Arvore {
 	}
 	
 	public No remover(No aux, Comparable elemento, boolean naoBalancear) {
-		aux = super.remover(aux, elemento);
+		No temp = super.remover(aux, elemento);
+		aux = copiarNo(aux, temp);
 		atualizarAltura(getRaiz());
 		if (!naoBalancear&&!isBalanceada()) {
 			balancear(getRaiz());
+		}
+		return aux;
+	}
+
+	private No copiarNo(No aux, No temp) {
+		if (temp!=null) {
+			aux.elemento = temp.elemento;
+			aux.esquerda = temp.esquerda;
+			aux.direita = temp.direita;
+		} else {
+			aux = null;
 		}
 		return aux;
 	}

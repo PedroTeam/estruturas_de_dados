@@ -13,7 +13,7 @@ public class Arvore {
 	public void add(Comparable elemento) {
 		add(getRaiz(), elemento);
 	}
-	
+
 	/**
 	 * Insere o elemento
 	 * 
@@ -63,63 +63,64 @@ public class Arvore {
 	}
 
 	public No remover(Comparable elemento) {
-		return remover(getRaiz(),elemento);
+		return remover(getRaiz(), elemento);
 	}
 
 	public No remover(No aux, Comparable elemento) {
 		No p, r = null;
-		if (aux==null) {
-			return aux;
-		}
-		if (aux.elemento.compareTo(elemento) == 0) {//achei o elemento
-			this.totalElementos--;
-			if (aux.esquerda == null && aux.direita == null) {
-				return null;
-			} else if (aux.esquerda == null) {
-				return aux.direita;
-			} else if (aux.direita == null) {
-				return aux.esquerda;
-			} else {
-				p = aux.direita;
-				while (p.esquerda != null) {
-					r = p;
-					p = p.esquerda;
-				}
-				aux.elemento = p.elemento;
-				
-				if (r!=null) {
-					p = p.direita;
-					r.esquerda = p;
+		if (aux != null) {
+			if (aux.elemento.compareTo(elemento) == 0) {// achei o elemento
+				this.totalElementos--;
+				if (aux.esquerda == null && aux.direita == null) {
+					return null;
+				} else if (aux.esquerda == null) {
+					aux = aux.direita;
+				} else if (aux.direita == null) {
+					aux = aux.esquerda;
 				} else {
-					aux.direita = p.direita;
+					p = aux.direita;
+					while (p.esquerda != null) {
+						r = p;
+						p = p.esquerda;
+					}
+					aux.elemento = p.elemento;
+
+					if (r != null) {
+						p = p.direita;
+						r.esquerda = p;
+					} else {
+						aux.direita = p.direita;
+					}
+					// Atribui a nova Raiz
+					if (elemento.equals(getRaiz().elemento)) {
+						raiz = aux;
+					}
 				}
-				return aux;
+			} else if (aux.elemento.compareTo(elemento) < 0) {
+				aux.direita = remover(aux.direita, elemento);
+			} else {
+				aux.esquerda = remover(aux.esquerda, elemento);
 			}
-		} else if (aux.elemento.compareTo(elemento) < 0) {
-			aux.direita = remover(aux.direita, elemento);
-		} else {
-			aux.esquerda = remover(aux.esquerda, elemento);
 		}
 		return aux;
 	}
 
 	public static boolean localizar(No aux, Comparable elemento, boolean loc) {
-        if (aux != null && loc == false) {
-            if (aux.elemento.equals(elemento)) {
-                loc = true;
-            } else if (elemento.compareTo(aux.elemento)<0) {
-                loc = localizar(aux.esquerda, elemento, loc);
-            } else {
-                loc = localizar(aux.direita, elemento, loc);
-            }
-        }
-        return loc;
-    }
+		if (aux != null && loc == false) {
+			if (aux.elemento.equals(elemento)) {
+				loc = true;
+			} else if (elemento.compareTo(aux.elemento) < 0) {
+				loc = localizar(aux.esquerda, elemento, loc);
+			} else {
+				loc = localizar(aux.direita, elemento, loc);
+			}
+		}
+		return loc;
+	}
 
 	public boolean localizar(Comparable elemento) {
 		return localizar(getRaiz(), elemento, false);
 	}
-	
 
 	@Override
 	public String toString() {
