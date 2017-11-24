@@ -1,5 +1,5 @@
 
-public class ArvoreAVL extends Arvore {
+public class ArvoreAVL extends ArvoreBinaria {
 
 	public void add(Comparable elemento, boolean naoBalancear) {
 		add(getRaiz(), elemento, naoBalancear);

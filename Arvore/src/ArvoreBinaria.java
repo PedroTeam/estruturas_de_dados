@@ -1,5 +1,5 @@
 
-public class Arvore {
+public class ArvoreBinaria {
 
 	private No raiz;
 

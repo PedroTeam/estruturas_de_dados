@@ -6,7 +6,7 @@ public class Programa {
 		Scanner scan = new Scanner(System.in);
 		System.out.printf("Escreva a quantidade de Veiculos:\n");
 		int quant = scan.nextInt();
-		Arvore veiculos = new Arvore();
+		ArvoreBinaria veiculos = new ArvoreBinaria();
 		Veiculo veiculo = null;
 		int placa = 0;
 		for (int i = 0; i < quant; i++) {

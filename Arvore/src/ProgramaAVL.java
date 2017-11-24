@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class ProgramaAVL {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 		Scanner scan = new Scanner(System.in);
 		System.out.printf("Escreva a quantidade de Veiculos:\n");
 		int quant = scan.nextInt();
@@ -21,34 +22,36 @@ public class ProgramaAVL {
 		}
 		System.out.println(veiculos);
 
-		while (placa!=0) {
+		while (placa != 0) {
 			clearConsole();
 			System.out.printf("Escreva a placa do veiculo para remover:\n");
 			placa = scan.nextInt();
 			clearConsole();
 			veiculos.remover(new Veiculo(placa));
-			imprimirTeste(veiculos);			
+			imprimirTeste(veiculos);
 		}
-		
 
 	}
 
 	private static void imprimirTeste(ArvoreAVL veiculos) {
-		System.out.println("Balanceada="+veiculos.isBalanceada());
+		System.out.println("Balanceada=" + veiculos.isBalanceada());
 		System.out.println(veiculos);
 	}
 
-	public final static void clearConsole()
-	{
-	    try
-	    {
-	    	 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	    			  
-	    }
-	    catch (final Exception e)
-	    {
-	        e.printStackTrace();
-	    }
+	public final static void clearConsole() {
+		try {
+//			final String os = System.getProperty("os.name");
+//
+//			if (os.contains("Windows")) {
+//				Runtime.getRuntime().exec("cls");
+//			} else {
+//				Runtime.getRuntime().exec("clear");
+//			}
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
